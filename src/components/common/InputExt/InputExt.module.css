@@ -1,0 +1,79 @@
+:root {
+  --errorColor: red;
+}
+
+.label {
+  font-weight: 500;
+}
+
+.description {
+  font-size: 0.7em;
+  color: grey;
+  padding-left: 0.3rem;
+}
+
+.asterisk {
+  color: red;
+  font-weight: 500;
+}
+
+.error {
+  color: var(--errorColor);
+  border-color: var(--errorColor);
+  font-size: 0.8em;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid grey;
+}
+
+.inputError {
+  border-color: var(--errorColor);
+  color: var(--errorColor);
+}
+
+/* ----------------- Размеры ------------------------------ */
+.sizeXs {
+  font-size: 0.6rem;
+}
+
+.sizeSm {
+  font-size: 0.8rem;
+}
+
+.sizeMd {
+  font-size: 1rem;
+}
+
+.sizeLg {
+  font-size: 1.2rem;
+}
+
+.sizeXl {
+  font-size: 1.4rem;
+}
+/* ----------------- END Размеры ---------------------------- */
+
+/* ----------------- Радиус закругления --------------------- */
+.radiusXs {
+  border-radius: none;
+}
+
+.radiusSm {
+  border-radius: 0.3rem;
+}
+
+.radiusMd {
+  border-radius: 0.7rem;
+}
+
+.radiusLg {
+  border-radius: 0.8rem;
+}
+
+.radiusXl {
+  border-radius: 1.2rem;
+}
+
+/* ----------------- END Радиус закругления --------------------- */

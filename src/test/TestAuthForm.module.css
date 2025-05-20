@@ -1,0 +1,15 @@
+.navRoot {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.navButton {
+  background-color: lightgray;
+}
+
+.navButtonActive {
+  background-color: lightsteelblue;
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
