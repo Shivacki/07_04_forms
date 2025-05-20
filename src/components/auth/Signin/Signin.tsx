@@ -6,12 +6,12 @@ import InputExt from '@InputExt'
 // import InputExt from '@components/common/InputExt'
 
 
-interface LoginInfoModel {
+export interface SigninInfoModel {
   email: string;
   password: string;
 }
 
-type SubmitCallback = (loginInfo: LoginInfoModel) => Promise<void>;
+export type SubmitCallback = (loginInfo: SigninInfoModel) => Promise<void>;
 
 interface SigninProps {
   onSubmit: SubmitCallback | null;
@@ -53,7 +53,7 @@ export default function Signin({ onSubmit }: SigninProps) {
 
   const handleFormSubmit = async (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('handleSigninSubmit');
+    // console.log('handleSigninSubmit');
 
     if (!validateForm())
       return;
@@ -63,7 +63,7 @@ export default function Signin({ onSubmit }: SigninProps) {
     }
   }
 
-  const handleFormChange = (event: React.ChangeEvent<HTMLFormElement>) => {
+  const handleFormChange = (/*event: React.ChangeEvent<HTMLFormElement>*/) => {
     resetAllErrors();
   }
 

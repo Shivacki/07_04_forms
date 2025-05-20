@@ -3,8 +3,9 @@
 import { useState, MouseEvent  } from 'react'
 import classNames from 'classNames'
 
-import Signin from '../components/auth/Signin'
-import Signup from '../components/auth/Signup'
+import Signin from '@components/auth/Signin'
+import Signup from '@components/auth/Signup'
+import { SigninInfoModel } from '@components/auth/Signin/Signin'
 
 import tsfStyles from './TestAuthForm.module.css'
 
@@ -28,6 +29,13 @@ export default function TestAuthForm() {
   const handleViewClick = (event: MouseEvent<HTMLButtonElement>) => {
     setView(event.currentTarget.name as TestView);
     // setView((event.target as HTMLButtonElement).name as TestView);
+  }
+
+  const handleSigninSubmit = async (data: SigninInfoModel) => {
+    // const { email, password } = data;
+    console.log('Signin data for submit:', data);
+    
+    // ... async server exchange     
   }
 
 
@@ -58,7 +66,7 @@ export default function TestAuthForm() {
       {/* Тело тестового функционала */}
       <div>
         {(view === TestView.SIGNIN_VIEW) && 
-          <Signin onSubmit = {null}/>
+          <Signin onSubmit = {handleSigninSubmit}/>
         }
         {(view === TestView.SIGNUP_VIEW) && 
           <Signup onSubmit = {null}/>

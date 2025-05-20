@@ -5,19 +5,21 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   resolve: {
+    /*
     alias: {
       "@appRoot": "/",
       "@src": "/src",
       "@components'": "/src/components",
       "@InputExt": "/src/components/common/InputExt",
-    },    
+    },
+    */    
 
-    /*
+    ///*
     alias: [
       { find: '@', replacement: '/src' },
       { find: '@components', replacement: '/src/components' },
       { find: '@InputExt', replacement: '/src/components/common/InputExt' }, 
     ],
-    */
+    //*/
   },  
 })
