@@ -33,6 +33,20 @@
   color: var(--errorColor);
 }
 
+/*
+.inputVariantDefault {
+}
+*/
+
+.inputVariantFilled {
+  background-color: lightgrey;
+}
+
+.inputVariantUnstyled {
+  border: none;
+}
+
+
 /* ----------------- Размеры ------------------------------ */
 .sizeXs {
   font-size: 0.6rem;

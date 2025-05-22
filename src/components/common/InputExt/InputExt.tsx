@@ -6,39 +6,27 @@ import styles from './InputExt.module.css'
 
 
 export type InputExtSizeInfo = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type InputExtvariantInfo = 'default' | 'filled' | 'unstyled' ;
 
 interface InputExtProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   description?: string;
   asize?: InputExtSizeInfo;
   radius?: InputExtSizeInfo;
+  variant?: InputExtvariantInfo;
   // Флаг поля ввода со зведочкой
   withAsterisk?: boolean;
   error?: string;
 }
 
-const DEFAULT_PROPS: Pick<InputExtProps, 'asize' | 'radius'> = {asize: 'md', radius: 'xs'};
-
-
-// Удаляет все собств. св-ва из объекта, оставляя только унаследованные св-ва прототипа (typescript delete all fields of T)
-// N.B. Мутирует исх. объект !!!
-type Empty<T> = { [K in keyof T]?: undefined };
-function deleteAllOwnFields<T extends object>(obj: T): Empty<T> {
-  for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      delete obj[key];
-    }
-  }
-  return obj as Empty<T>;
-}
+// props с обязательной внутренней инициализацией по умолчанию (ост. иниц-ть не обяз-но)
+const DEFAULT_PROPS: Pick<InputExtProps, 'asize' | 'radius' | 'variant'> = {asize: 'md', radius: 'xs', variant: 'default'};
 
 
 export const InputExt = (props: InputExtProps) => {
 
-  const { label, description, asize, radius, withAsterisk, error}: InputExtProps = {...DEFAULT_PROPS, ...props};
+  const { label, description, asize, radius, variant, withAsterisk, error, ...inputNativeProps}: InputExtProps = {...DEFAULT_PROPS, ...props};
   
-  const inputNativeProps = deleteAllOwnFields({...props});
-
   const isError = !!error;
 
   // css. Размер эл-та
@@ -59,6 +47,13 @@ export const InputExt = (props: InputExtProps) => {
     [styles.radiusXl]: radius === 'xl',
   });
 
+  // css. Вид
+  const variantClassName = classNames({
+    '': variant === 'default',
+    [styles.inputVariantFilled]: variant === 'filled',
+    [styles.inputVariantUnstyled]: variant === 'unstyled',
+  });
+
 
   return (
     <div 
@@ -75,14 +70,12 @@ export const InputExt = (props: InputExtProps) => {
       }
       <div>
         <input 
-          className={classNames(styles.input, sizeClassName, radiusClassName,
+          className={classNames(styles.input, sizeClassName, radiusClassName, variantClassName, 
             {
               [styles.inputError]: isError,
             }
           )}
           
-          // {...props}
-          // {...deleteAllOwnFields({...props})}
           {...inputNativeProps}
         />
       </div>

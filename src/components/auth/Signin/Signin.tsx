@@ -91,6 +91,7 @@ export default function Signin({ onSubmit }: SigninProps) {
           description='Эл. почта пользователя'
           // asize='lg'
           // radius='md'
+          // variant='filled'
           withAsterisk={true}
           error={errorEmail}
           id={`${mprefix}Email`}
