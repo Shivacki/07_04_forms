@@ -6,6 +6,7 @@ import classNames from 'classNames'
 import Signin from '@components/auth/Signin'
 import Signup from '@components/auth/Signup'
 import { SigninInfoModel } from '@components/auth/Signin/Signin'
+import { SignupInfoModel } from '@components/auth/Signup/Signup'
 
 import tsfStyles from './TestAuthForm.module.css'
 
@@ -34,6 +35,12 @@ export default function TestAuthForm() {
   const handleSigninSubmit = async (data: SigninInfoModel) => {
     // const { email, password } = data;
     console.log('Signin data for submit:', data);
+    
+    // ... async server exchange     
+  }
+
+  const handleSignupSubmit = async (data: SignupInfoModel) => {
+    console.log('Signup data for submit:', data);
     
     // ... async server exchange     
   }
@@ -69,7 +76,7 @@ export default function TestAuthForm() {
           <Signin onSubmit = {handleSigninSubmit}/>
         }
         {(view === TestView.SIGNUP_VIEW) && 
-          <Signup onSubmit = {null}/>
+          <Signup onSubmit = {handleSignupSubmit}/>
          }
       </div>
     </>

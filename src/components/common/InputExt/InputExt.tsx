@@ -1,5 +1,5 @@
 // Расширенный Input - компонент для ввода текста с доп. св-вами
-import { InputHTMLAttributes } from 'react'
+import { InputHTMLAttributes, RefAttributes } from 'react'
 import classNames from 'classNames'
 
 import styles from './InputExt.module.css'
@@ -8,7 +8,7 @@ import styles from './InputExt.module.css'
 export type InputExtSizeInfo = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type InputExtvariantInfo = 'default' | 'filled' | 'unstyled' ;
 
-interface InputExtProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputExtProps extends InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTMLInputElement> {
   label: string;
   description?: string;
   asize?: InputExtSizeInfo;
@@ -26,7 +26,8 @@ const DEFAULT_PROPS: Pick<InputExtProps, 'asize' | 'radius' | 'variant'> = {asiz
 export const InputExt = (props: InputExtProps) => {
 
   const { label, description, asize, radius, variant, withAsterisk, error, ...inputNativeProps}: InputExtProps = {...DEFAULT_PROPS, ...props};
-  
+  // console.log('inputNativeProps.ref =', inputNativeProps.ref, ' onChange = ', inputNativeProps.onChange);
+
   const isError = !!error;
 
   // css. Размер эл-та

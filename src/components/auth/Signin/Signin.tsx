@@ -7,13 +7,12 @@ import * as validation from '@validation'
 import styles from './Signin.module.css'
 
 
-
 export interface SigninInfoModel {
   email: string;
   password: string;
 }
 
-export type SubmitCallback = (loginInfo: SigninInfoModel) => Promise<void>;
+export type SubmitCallback = (data: SigninInfoModel) => Promise<void>;
 
 interface SigninProps {
   onSubmit: SubmitCallback | null;
@@ -84,7 +83,6 @@ export default function Signin({ onSubmit }: SigninProps) {
       onChange={handleFormChange}
       onSubmit={handleFormSubmit}
     >
-      {/* Вход */}
       <div className={styles.bodyContainer}>
         <InputExt
           label='Логин (e-mail)'
@@ -92,7 +90,6 @@ export default function Signin({ onSubmit }: SigninProps) {
           // asize='lg'
           // radius='md'
           // variant='filled'
-          withAsterisk={true}
           error={errorEmail}
           id={`${mprefix}Email`}
           type='email'
