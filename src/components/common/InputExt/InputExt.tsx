@@ -12,7 +12,7 @@ interface InputExtProps extends InputHTMLAttributes<HTMLInputElement> {
   description?: string;
   asize?: InputExtSizeInfo;
   radius?: InputExtSizeInfo;
-  // Флаг обязательного поля ввода
+  // Флаг поля ввода со зведочкой
   withAsterisk?: boolean;
   error?: string;
 }
@@ -20,9 +20,24 @@ interface InputExtProps extends InputHTMLAttributes<HTMLInputElement> {
 const DEFAULT_PROPS: Pick<InputExtProps, 'asize' | 'radius'> = {asize: 'md', radius: 'xs'};
 
 
+// Удаляет все собств. св-ва из объекта, оставляя только унаследованные св-ва прототипа (typescript delete all fields of T)
+// N.B. Мутирует исх. объект !!!
+type Empty<T> = { [K in keyof T]?: undefined };
+function deleteAllOwnFields<T extends object>(obj: T): Empty<T> {
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      delete obj[key];
+    }
+  }
+  return obj as Empty<T>;
+}
+
+
 export const InputExt = (props: InputExtProps) => {
 
   const { label, description, asize, radius, withAsterisk, error}: InputExtProps = {...DEFAULT_PROPS, ...props};
+  
+  const inputNativeProps = deleteAllOwnFields({...props});
 
   const isError = !!error;
 
@@ -66,7 +81,9 @@ export const InputExt = (props: InputExtProps) => {
             }
           )}
           
-          {...props}
+          // {...props}
+          // {...deleteAllOwnFields({...props})}
+          {...inputNativeProps}
         />
       </div>
       {!!error && 

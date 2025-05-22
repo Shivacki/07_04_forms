@@ -1,9 +1,11 @@
 import React, { useState, SyntheticEvent } from 'react'
 
-import styles from './Signin.module.css'
-
 import InputExt from '@InputExt'
 // import InputExt from '@components/common/InputExt'
+import * as validation from '@validation'
+
+import styles from './Signin.module.css'
+
 
 
 export interface SigninInfoModel {
@@ -33,8 +35,9 @@ export default function Signin({ onSubmit }: SigninProps) {
 
   const validateForm = (): boolean => {
     try {
-      if (!email) {
-        setErrorEmail('Не задан e-mail');
+
+      if (!email || !validation.isEmailValid(email)) {
+        setErrorEmail('e-mail не задан или некорректен');
         return false;
       }
   
@@ -52,8 +55,8 @@ export default function Signin({ onSubmit }: SigninProps) {
 
 
   const handleFormSubmit = async (event: SyntheticEvent<HTMLFormElement>) => {
-    event.preventDefault();
     // console.log('handleSigninSubmit');
+    event.preventDefault();
 
     if (!validateForm())
       return;
@@ -92,6 +95,8 @@ export default function Signin({ onSubmit }: SigninProps) {
           error={errorEmail}
           id={`${mprefix}Email`}
           type='email'
+          required
+          // placeholder='Введите e-mail'
           value={email}
           onChange={handleEmailChange}
         />

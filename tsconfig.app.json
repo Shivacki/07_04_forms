@@ -30,6 +30,7 @@
       "@src/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
       "@InputExt": ["./src/components/common/InputExt"],
+      "@validation": ["./src/shared/lib/validation.ts"],
     },
   },
   "include": ["src"]
