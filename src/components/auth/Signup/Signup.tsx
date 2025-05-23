@@ -70,6 +70,11 @@ export default function Signup({ onSubmit }: SignupProps) {
         setErrorPassword('Пароли не совпадают или пустой пароль');
         return false;
       }
+
+      if (!validation.isPasswordValid(password)) {
+        setErrorPassword('Пароль не соответсвует ограничениям');
+        return false;
+      }
   
       return true;
     
@@ -165,6 +170,7 @@ export default function Signup({ onSubmit }: SignupProps) {
 
         <InputExt
           label='Пароль'
+          description='Не менее 8 символов'
           id={`${mprefix}Password`}
           type='password'
           value={password}
