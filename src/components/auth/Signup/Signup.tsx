@@ -1,12 +1,11 @@
-import { useState, useRef, SyntheticEvent } from 'react'
+import React, { useState, useRef, SyntheticEvent } from 'react'
 
 import InputExt from '@InputExt'
+import GenderRadio, { GenderModel } from '@GenderRadio'
 import * as validation from '@validation'
 
 import styles from './Signup.module.css'
 
-
-type GenderModel = 'male' | 'female';
 
 export interface SignupInfoModel {
   firstname: string;
@@ -168,6 +167,8 @@ export default function Signup({ onSubmit }: SignupProps) {
           onChange={handleEmailChange}
         />
 
+        <GenderRadio value={gender} setterFn={setGender}/>
+
         <InputExt
           label='Пароль'
           description='Не менее 8 символов'
@@ -194,6 +195,5 @@ export default function Signup({ onSubmit }: SignupProps) {
     </form>
   )
 }
-
 
 

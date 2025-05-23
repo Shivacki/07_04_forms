@@ -30,6 +30,7 @@
       "@src/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
       "@InputExt": ["./src/components/common/InputExt"],
+      "@GenderRadio": ["./src/components/common/GenderRadio"],
       "@validation": ["./src/shared/lib/validation.ts"],
     },
   },

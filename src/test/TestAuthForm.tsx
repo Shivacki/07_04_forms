@@ -3,10 +3,8 @@
 import { useState, MouseEvent  } from 'react'
 import classNames from 'classNames'
 
-import Signin from '@components/auth/Signin'
-import Signup from '@components/auth/Signup'
-import { SigninInfoModel } from '@components/auth/Signin/Signin'
-import { SignupInfoModel } from '@components/auth/Signup/Signup'
+import Signin, { SigninInfoModel } from '@components/auth/Signin'
+import Signup, { SignupInfoModel } from '@components/auth/Signup'
 
 import tsfStyles from './TestAuthForm.module.css'
 

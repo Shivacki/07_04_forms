@@ -19,6 +19,7 @@ export default defineConfig({
       { find: '@', replacement: '/src' },
       { find: '@components', replacement: '/src/components' },
       { find: '@InputExt', replacement: '/src/components/common/InputExt' }, 
+      { find: '@GenderRadio', replacement: '/src/components/common/GenderRadio' }, 
       { find: '@validation', replacement: '/src/shared/lib/validation.ts' }, 
     ],
     //*/
