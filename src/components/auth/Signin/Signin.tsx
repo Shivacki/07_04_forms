@@ -86,7 +86,7 @@ export default function Signin({ onSubmit }: SigninProps) {
       <div className={styles.bodyContainer}>
         <InputExt
           label='Логин (e-mail)'
-          description='Эл. почта пользователя'
+          // description='Эл. почта пользователя'
           // asize='lg'
           // radius='md'
           // variant='filled'
@@ -94,7 +94,7 @@ export default function Signin({ onSubmit }: SigninProps) {
           id={`${mprefix}Email`}
           type='email'
           required
-          // placeholder='Введите e-mail'
+          placeholder='login@domain'
           value={email}
           onChange={handleEmailChange}
         />

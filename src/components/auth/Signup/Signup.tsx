@@ -30,6 +30,9 @@ const mprefix = 'sign_up_cmpnt';
 export default function Signup({ onSubmit }: SignupProps) {
   
   const refFirstname = useRef<HTMLInputElement>(null);
+  const refNickname = useRef<HTMLInputElement>(null);
+  const refEmail = useRef<HTMLInputElement>(null);
+  const refPassword2 = useRef<HTMLInputElement>(null);
 
   const [firstname, setFirstname] = useState('');
   const [nickname, setNickname] = useState('');
@@ -57,21 +60,25 @@ export default function Signup({ onSubmit }: SignupProps) {
   
       if (!nickname) {
         setErrorNickname('Ник не задан');
+        refNickname.current?.focus();
         return false;
       }
   
       if (!email || !validation.isEmailValid(email)) {
         setErrorEmail('e-mail не задан или некорректен');
+        refEmail.current?.focus();
         return false;
       }
   
       if (!password || (password !== password2)) {
         setErrorPassword('Пароли не совпадают или пустой пароль');
+        refPassword2.current?.focus();
         return false;
       }
 
       if (!validation.isPasswordValid(password)) {
         setErrorPassword('Пароль не соответсвует ограничениям');
+        refPassword2.current?.focus();
         return false;
       }
   
@@ -146,12 +153,12 @@ export default function Signup({ onSubmit }: SignupProps) {
 
         <InputExt
           label='Ник'
-          description='Уникальный псевдоним'
-          withAsterisk={true}
+          description='Если задан, то отображается вместо имени'
           error={errorNickname}
           id={`${mprefix}Nickname`}
           value={nickname}
           onChange={handleNicknameChange}
+          ref={refNickname}
         />
 
         <InputExt
@@ -165,6 +172,7 @@ export default function Signup({ onSubmit }: SignupProps) {
           // placeholder='Введите e-mail'
           value={email}
           onChange={handleEmailChange}
+          ref={refEmail}
         />
 
         <GenderRadio value={gender} setterFn={setGender}/>
@@ -185,6 +193,7 @@ export default function Signup({ onSubmit }: SignupProps) {
           type='password'
           value={password2}
           onChange={handlePassword2Change}
+          ref={refPassword2}
         />
 
       </div>
