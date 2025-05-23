@@ -31,6 +31,32 @@
 .inputError {
   border-color: var(--errorColor);
   color: var(--errorColor);
+  outline: none;
+}
+
+/* контейнер input'а, в к-ом отобр-ется image + input */
+.inputImgContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid grey;
+  /* padding: 1px 2px; */
+}
+
+.inputImgContainerError {
+  border-color: var(--errorColor);
+  color: var(--errorColor);
+}
+
+/* input, когда рядом отобр-ется image >> за границы отвечает контейнер */
+.inputImg {
+  border: none;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.inputImg:focus {
+  outline: none;  /* выд-е эл-та при фокусе */
 }
 
 /*

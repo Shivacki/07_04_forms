@@ -92,8 +92,8 @@ export default function Signin({ onSubmit }: SigninProps) {
           // variant='filled'
           error={errorEmail}
           id={`${mprefix}Email`}
-          type='email'
-          required
+          // type='email'
+          // required
           placeholder='login@domain'
           value={email}
           onChange={handleEmailChange}

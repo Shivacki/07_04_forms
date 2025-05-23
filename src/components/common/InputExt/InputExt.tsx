@@ -17,6 +17,7 @@ interface InputExtProps extends InputHTMLAttributes<HTMLInputElement>, RefAttrib
   // Флаг поля ввода со зведочкой
   withAsterisk?: boolean;
   error?: string;
+  icon?: any;
 }
 
 // props с обязательной внутренней инициализацией по умолчанию (ост. иниц-ть не обяз-но)
@@ -25,10 +26,20 @@ const DEFAULT_PROPS: Pick<InputExtProps, 'asize' | 'radius' | 'variant'> = {asiz
 
 export const InputExt = (props: InputExtProps) => {
 
-  const { label, description, asize, radius, variant, withAsterisk, error, ...inputNativeProps}: InputExtProps = {...DEFAULT_PROPS, ...props};
+  const { label, description, asize, radius, variant, withAsterisk, error, icon, ...inputNativeProps}: InputExtProps = {...DEFAULT_PROPS, ...props};
   // console.log('inputNativeProps.ref =', inputNativeProps.ref, ' onChange = ', inputNativeProps.onChange);
 
-  const isError = !!error;
+  // css. input
+  const inputClassName = classNames({
+    [styles.input]: true,
+    [styles.inputImg]: !!icon,
+  });
+  
+  // css. input-контейнер. Исп-ется, напр.  когда 
+  const inputContainerClassName = classNames({
+    [styles.inputImgContainer]: !!icon,
+    [styles.inputImgContainerError]: !!icon && !!error,
+  });
 
   // css. Размер эл-та
   const sizeClassName = classNames({
@@ -54,7 +65,7 @@ export const InputExt = (props: InputExtProps) => {
     [styles.inputVariantFilled]: variant === 'filled',
     [styles.inputVariantUnstyled]: variant === 'unstyled',
   });
-
+  
 
   return (
     <div 
@@ -69,11 +80,12 @@ export const InputExt = (props: InputExtProps) => {
           <span>{description}</span>
         </div>
       }
-      <div>
+      <div className={inputContainerClassName}>
+        {!!icon && <span>{icon}</span>}
         <input 
-          className={classNames(styles.input, sizeClassName, radiusClassName, variantClassName, 
+          className={classNames(inputClassName, sizeClassName, radiusClassName, variantClassName, 
             {
-              [styles.inputError]: isError,
+              [styles.inputError]: !!error,
             }
           )}
           

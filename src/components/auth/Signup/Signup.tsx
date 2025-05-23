@@ -167,12 +167,13 @@ export default function Signup({ onSubmit }: SignupProps) {
           withAsterisk={true}
           error={errorEmail}
           id={`${mprefix}Email`}
-          type='email'
+          // type='email'
           // required
           // placeholder='Введите e-mail'
           value={email}
           onChange={handleEmailChange}
           ref={refEmail}
+          icon={<img src='/at.svg' className={styles.imgEmail} alt=' '></img>}
         />
 
         <GenderRadio value={gender} setterFn={setGender}/>
