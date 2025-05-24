@@ -27,7 +27,6 @@ const DEFAULT_PROPS: Pick<InputTextProps, 'asize' | 'radius' | 'variant'> = {asi
 export const InputText = (props: InputTextProps) => {
 
   const { label, description, asize, radius, variant, withAsterisk, error, icon, ...inputNativeProps}: InputTextProps = {...DEFAULT_PROPS, ...props};
-  // console.log('inputNativeProps.ref =', inputNativeProps.ref, ' onChange = ', inputNativeProps.onChange);
 
   // css. input
   const inputClassName = classNames({
@@ -36,7 +35,7 @@ export const InputText = (props: InputTextProps) => {
     [styles.inputImg]: !!icon,
   });
   
-  // css. input-контейнер. Исп-ется, напр.  когда 
+  // css. input-контейнер
   const inputContainerClassName = classNames({
     [styles.inputImgContainer]: !!icon,
     [styles.inputImgContainerError]: !!icon && !!error,

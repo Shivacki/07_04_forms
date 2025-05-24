@@ -52,7 +52,6 @@ export default function Signin({ onSubmit }: SigninProps) {
 
 
   const handleFormSubmit = async (event: SyntheticEvent<HTMLFormElement>) => {
-    // console.log('handleSigninSubmit');
     event.preventDefault();
 
     if (!validateForm())

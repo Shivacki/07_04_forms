@@ -55,7 +55,6 @@ export default function Signup({ onSubmit }: SignupProps) {
 
       if (!firstname) {
         setErrorFirstname('Имя пользователя не задано');
-        // console.log('refFirstname.current =', refFirstname.current);
         refFirstname.current?.focus();
         return false;
       }
@@ -100,7 +99,6 @@ export default function Signup({ onSubmit }: SignupProps) {
 
 
   const handleFormSubmit = async (event: SyntheticEvent<HTMLFormElement>) => {
-    // console.log('handleSignupSubmit');
     event.preventDefault();
 
     if (!validateForm())
