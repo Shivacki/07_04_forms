@@ -2,18 +2,18 @@
 import { InputHTMLAttributes, RefAttributes } from 'react'
 import classNames from 'classNames'
 
-import styles from './InputExt.module.css'
+import styles from './InputText.module.css'
 
 
-export type InputExtSizeInfo = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-export type InputExtvariantInfo = 'default' | 'filled' | 'unstyled' ;
+export type InputTextSizeInfo = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type InputTextVariantInfo = 'default' | 'filled' | 'unstyled';
 
-interface InputExtProps extends InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTMLInputElement> {
+interface InputTextProps extends InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTMLInputElement> {
   label: string;
   description?: string;
-  asize?: InputExtSizeInfo;
-  radius?: InputExtSizeInfo;
-  variant?: InputExtvariantInfo;
+  asize?: InputTextSizeInfo;
+  radius?: InputTextSizeInfo;
+  variant?: InputTextVariantInfo;
   // Флаг поля ввода со зведочкой
   withAsterisk?: boolean;
   error?: string;
@@ -21,12 +21,12 @@ interface InputExtProps extends InputHTMLAttributes<HTMLInputElement>, RefAttrib
 }
 
 // props с обязательной внутренней инициализацией по умолчанию (ост. иниц-ть не обяз-но)
-const DEFAULT_PROPS: Pick<InputExtProps, 'asize' | 'radius' | 'variant'> = {asize: 'md', radius: 'xs', variant: 'default'};
+const DEFAULT_PROPS: Pick<InputTextProps, 'asize' | 'radius' | 'variant'> = {asize: 'md', radius: 'xs', variant: 'default'};
 
 
-export const InputExt = (props: InputExtProps) => {
+export const InputText = (props: InputTextProps) => {
 
-  const { label, description, asize, radius, variant, withAsterisk, error, icon, ...inputNativeProps}: InputExtProps = {...DEFAULT_PROPS, ...props};
+  const { label, description, asize, radius, variant, withAsterisk, error, icon, ...inputNativeProps}: InputTextProps = {...DEFAULT_PROPS, ...props};
   // console.log('inputNativeProps.ref =', inputNativeProps.ref, ' onChange = ', inputNativeProps.onChange);
 
   // css. input

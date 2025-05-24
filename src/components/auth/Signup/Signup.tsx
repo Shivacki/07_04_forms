@@ -1,6 +1,6 @@
 import React, { useState, useId, useRef, SyntheticEvent } from 'react'
 
-import InputExt from '@InputExt'
+import InputText from '@InputText'
 import GenderRadio, { GenderModel } from '@GenderRadio'
 import * as validation from '@validation'
 
@@ -142,7 +142,7 @@ export default function Signup({ onSubmit }: SignupProps) {
       onSubmit={handleFormSubmit}
     >
       <div className={styles.bodyContainer}>
-        <InputExt
+        <InputText
           label='Имя'
           withAsterisk={true}
           error={errorFirstname}
@@ -152,7 +152,7 @@ export default function Signup({ onSubmit }: SignupProps) {
           ref={refFirstname}
         />
 
-        <InputExt
+        <InputText
           label='Ник'
           description='Если задан, то отображается вместо имени'
           error={errorNickname}
@@ -162,7 +162,7 @@ export default function Signup({ onSubmit }: SignupProps) {
           ref={refNickname}
         />
 
-        <InputExt
+        <InputText
           label='E-mail'
           description='Используется в качестве логина при входе'
           withAsterisk={true}
@@ -176,7 +176,7 @@ export default function Signup({ onSubmit }: SignupProps) {
 
         <GenderRadio value={gender} setterFn={setGender}/>
 
-        <InputExt
+        <InputText
           label='Пароль'
           description='Не менее 8 символов'
           id={passwordId}
@@ -185,7 +185,7 @@ export default function Signup({ onSubmit }: SignupProps) {
           onChange={handlePasswordChange}
         />
 
-        <InputExt
+        <InputText
           label='Повторите пароль'
           error={errorPassword}
           id={password2Id}

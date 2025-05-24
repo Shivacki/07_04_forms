@@ -10,7 +10,7 @@ export default defineConfig({
       "@appRoot": "/",
       "@src": "/src",
       "@components'": "/src/components",
-      "@InputExt": "/src/components/common/InputExt",
+      "@InputText": "/src/components/common/InputText",
     },
     */    
 
@@ -18,7 +18,7 @@ export default defineConfig({
     alias: [
       { find: '@', replacement: '/src' },
       { find: '@components', replacement: '/src/components' },
-      { find: '@InputExt', replacement: '/src/components/common/InputExt' }, 
+      { find: '@InputText', replacement: '/src/components/common/InputText' }, 
       { find: '@GenderRadio', replacement: '/src/components/common/GenderRadio' }, 
       { find: '@validation', replacement: '/src/shared/lib/validation.ts' }, 
     ],

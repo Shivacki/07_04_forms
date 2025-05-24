@@ -29,7 +29,7 @@
       "@appRoot/*": ["./*"],
       "@src/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
-      "@InputExt": ["./src/components/common/InputExt"],
+      "@InputText": ["./src/components/common/InputText"],
       "@GenderRadio": ["./src/components/common/GenderRadio"],
       "@validation": ["./src/shared/lib/validation.ts"],
     },

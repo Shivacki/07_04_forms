@@ -1,7 +1,6 @@
 import React, { useState, useId, SyntheticEvent } from 'react'
 
-import InputExt from '@InputExt'
-// import InputExt from '@components/common/InputExt'
+import InputText from '@InputText'
 import * as validation from '@validation'
 
 import styles from './Signin.module.css'
@@ -83,7 +82,7 @@ export default function Signin({ onSubmit }: SigninProps) {
       onSubmit={handleFormSubmit}
     >
       <div className={styles.bodyContainer}>
-        <InputExt
+        <InputText
           label='Логин (e-mail)'
           error={errorEmail}
           id={emailId}
@@ -92,7 +91,7 @@ export default function Signin({ onSubmit }: SigninProps) {
           onChange={handleEmailChange}
         />
 
-        <InputExt
+        <InputText
           label='Пароль'
           error={errorPassword}
           id={passwordId}
