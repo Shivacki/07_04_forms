@@ -1,4 +1,4 @@
-import React, { useState, useRef, SyntheticEvent } from 'react'
+import React, { useState, useId, useRef, SyntheticEvent } from 'react'
 
 import InputExt from '@InputExt'
 import GenderRadio, { GenderModel } from '@GenderRadio'
@@ -21,10 +21,6 @@ interface SignupProps {
   onSubmit: SubmitCallback | null;
 }
 
-// Логический префикс в модели комп-та для получения текстовых идентификаторов. 
-// М.б. исп-н для разных целей: формирование id и др.
-const mprefix = 'sign_up_cmpnt';
-
 
 // Форма Регистрация
 export default function Signup({ onSubmit }: SignupProps) {
@@ -46,6 +42,12 @@ export default function Signup({ onSubmit }: SignupProps) {
   const [errorNickname, setErrorNickname] = useState('');
   const [errorEmail, setErrorEmail] = useState('');
   const [errorPassword, setErrorPassword] = useState('');
+
+  const firstnameId = 'firstnameId_' + useId();
+  const nicknameId = 'nicknameId_' + useId();
+  const emailId = 'emailId_' + useId();
+  const passwordId = 'passwordId_' + useId();
+  const password2Id = 'password2Id_' + useId();
 
 
   const validateForm = (): boolean => {
@@ -142,10 +144,9 @@ export default function Signup({ onSubmit }: SignupProps) {
       <div className={styles.bodyContainer}>
         <InputExt
           label='Имя'
-          // description='Имя пользователя'
           withAsterisk={true}
           error={errorFirstname}
-          id={`${mprefix}Firstname`}
+          id={firstnameId}
           value={firstname}
           onChange={handleFirstnameChange}
           ref={refFirstname}
@@ -155,7 +156,7 @@ export default function Signup({ onSubmit }: SignupProps) {
           label='Ник'
           description='Если задан, то отображается вместо имени'
           error={errorNickname}
-          id={`${mprefix}Nickname`}
+          id={nicknameId}
           value={nickname}
           onChange={handleNicknameChange}
           ref={refNickname}
@@ -166,10 +167,7 @@ export default function Signup({ onSubmit }: SignupProps) {
           description='Используется в качестве логина при входе'
           withAsterisk={true}
           error={errorEmail}
-          id={`${mprefix}Email`}
-          // type='email'
-          // required
-          // placeholder='Введите e-mail'
+          id={emailId}
           value={email}
           onChange={handleEmailChange}
           ref={refEmail}
@@ -181,7 +179,7 @@ export default function Signup({ onSubmit }: SignupProps) {
         <InputExt
           label='Пароль'
           description='Не менее 8 символов'
-          id={`${mprefix}Password`}
+          id={passwordId}
           type='password'
           value={password}
           onChange={handlePasswordChange}
@@ -190,7 +188,7 @@ export default function Signup({ onSubmit }: SignupProps) {
         <InputExt
           label='Повторите пароль'
           error={errorPassword}
-          id={`${mprefix}Password2`}
+          id={password2Id}
           type='password'
           value={password2}
           onChange={handlePassword2Change}

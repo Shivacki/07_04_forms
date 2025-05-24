@@ -1,4 +1,4 @@
-import React, { useState, SyntheticEvent } from 'react'
+import React, { useState, useId, SyntheticEvent } from 'react'
 
 import InputExt from '@InputExt'
 // import InputExt from '@components/common/InputExt'
@@ -18,10 +18,6 @@ interface SigninProps {
   onSubmit: SubmitCallback | null;
 }
 
-// Логический префикс в модели комп-та для получения текстовых идентификаторов. 
-// М.б. исп-н для разных целей: формирование id и др.
-const mprefix = 'sign_in_cmpnt';
-
 
 // Форма Логин
 export default function Signin({ onSubmit }: SigninProps) {
@@ -30,6 +26,9 @@ export default function Signin({ onSubmit }: SigninProps) {
   const [password, setPassword] = useState('');
   const [errorEmail, setErrorEmail] = useState('');
   const [errorPassword, setErrorPassword] = useState('');
+
+  const emailId = 'emailId_' + useId();
+  const passwordId = 'passwordId_' + useId();
 
 
   const validateForm = (): boolean => {
@@ -86,14 +85,8 @@ export default function Signin({ onSubmit }: SigninProps) {
       <div className={styles.bodyContainer}>
         <InputExt
           label='Логин (e-mail)'
-          // description='Эл. почта пользователя'
-          // asize='lg'
-          // radius='md'
-          // variant='filled'
           error={errorEmail}
-          id={`${mprefix}Email`}
-          // type='email'
-          // required
+          id={emailId}
           placeholder='login@domain'
           value={email}
           onChange={handleEmailChange}
@@ -102,7 +95,7 @@ export default function Signin({ onSubmit }: SigninProps) {
         <InputExt
           label='Пароль'
           error={errorPassword}
-          id={`${mprefix}Password`}
+          id={passwordId}
           type='password'
           value={password}
           onChange={handlePasswordChange}

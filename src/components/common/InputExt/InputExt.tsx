@@ -32,6 +32,7 @@ export const InputExt = (props: InputExtProps) => {
   // css. input
   const inputClassName = classNames({
     [styles.input]: true,
+    [styles.inputError]: !!error,    
     [styles.inputImg]: !!icon,
   });
   
@@ -83,11 +84,7 @@ export const InputExt = (props: InputExtProps) => {
       <div className={inputContainerClassName}>
         {!!icon && <span>{icon}</span>}
         <input 
-          className={classNames(inputClassName, sizeClassName, radiusClassName, variantClassName, 
-            {
-              [styles.inputError]: !!error,
-            }
-          )}
+          className={classNames(inputClassName, sizeClassName, radiusClassName, variantClassName)}
           
           {...inputNativeProps}
         />
